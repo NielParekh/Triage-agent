@@ -178,7 +178,7 @@ triage_agent/
 Key dependencies:
 
 - **litellm** (1.82.0) — Unified LLM interface
-- **litmos-sdk** (0.1.0) — Monitoring and drift detection
+- **litmus-sdk** (0.1.3) — Monitoring and drift detection with LLM as a judge
 - **openai** (2.26.0) — OpenAI API client
 - **python-dotenv** (1.2.2) — Environment variable management
 - **click** (8.3.1) — CLI utilities
