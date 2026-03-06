@@ -123,22 +123,45 @@ The `triage()` function returns a dict with:
 }
 ```
 
-### Golden Tests
+### Golden Tests & Litmus CLI
 
 The project includes a suite of golden tests defined in `litmus.toml`. These tests verify the model's behavior across different scenarios:
 
-- **simple_select**: Low urgency (mild headache)
-- **filtered_select**: Medium urgency (fever + fatigue)
-- **join_query**: High urgency (chest pain + breathing difficulty)
-- **aggregation**: Red flag detection (loss of consciousness)
-- **security_injection**: Complex multi-symptom extraction
+#### Initialize Litmus Project
 
-Run golden tests with the litmus SDK:
+Set up the litmus project locally:
+
+```bash
+litmus init
+```
+
+This initializes the litmus database and prepares your project for monitoring and golden test validation.
+
+#### Watch Mode (Real-time Monitoring)
+
+Monitor your triage agent in real-time with live updates on model performance and golden test results:
+
+```bash
+litmus watch
+```
+
+This command:
+- Watches for calls to your triage agent
+- Validates outputs against golden test patterns
+- Displays real-time drift detection
+- Shows model performance metrics
+- Streams updates to your terminal as tests run
+
+Run in one terminal while executing triage calls in another to see live results.
+
+#### Manual Golden Test Runs
+
+Run golden tests programmatically with the litmus SDK:
 
 ```python
-from litmus_sdk import litmusSDK
+from litmos_sdk import LitmosSDK
 
-sdk = litmusSDK()
+sdk = LitmosSDK()
 # Golden tests will be automatically validated against your model responses
 ```
 
