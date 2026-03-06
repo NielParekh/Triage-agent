@@ -1,6 +1,6 @@
 # Medical Triage Assistant
 
-A two-agent AI-powered medical triage system that classifies patient symptoms and assigns urgency levels. Built with LiteLLM and powered by monitoring and testing via the Litmos SDK.
+A two-agent AI-powered medical triage system that classifies patient symptoms and assigns urgency levels. Built with LiteLLM and powered by monitoring and testing via the litmus SDK.
 
 ## Overview
 
@@ -125,7 +125,7 @@ The `triage()` function returns a dict with:
 
 ### Golden Tests
 
-The project includes a suite of golden tests defined in `litmos.toml`. These tests verify the model's behavior across different scenarios:
+The project includes a suite of golden tests defined in `litmus.toml`. These tests verify the model's behavior across different scenarios:
 
 - **simple_select**: Low urgency (mild headache)
 - **filtered_select**: Medium urgency (fever + fatigue)
@@ -133,12 +133,12 @@ The project includes a suite of golden tests defined in `litmos.toml`. These tes
 - **aggregation**: Red flag detection (loss of consciousness)
 - **security_injection**: Complex multi-symptom extraction
 
-Run golden tests with the Litmos SDK:
+Run golden tests with the litmus SDK:
 
 ```python
-from litmos_sdk import LitmosSDK
+from litmus_sdk import litmusSDK
 
-sdk = LitmosSDK()
+sdk = litmusSDK()
 # Golden tests will be automatically validated against your model responses
 ```
 
@@ -152,9 +152,9 @@ sdk = LitmosSDK()
 | `LITMUS_MODEL` | `gpt-4o-mini` | LLM model to use |
 | `LITMUS_TEMPERATURE` | `0.0` | Model temperature (0 = deterministic) |
 
-### litmos.toml
+### litmus.toml
 
-The `litmos.toml` file configures:
+The `litmus.toml` file configures:
 
 - **Project metadata** — ID, name, description
 - **Agent entrypoint** — Points to `triage()` function
@@ -166,11 +166,11 @@ The `litmos.toml` file configures:
 ```
 triage_agent/
 ├── triage_agent.py       # Main agent code
-├── litmos.toml           # Golden tests and configuration
+├── litmus.toml           # Golden tests and configuration
 ├── requirements.txt      # Python dependencies
 ├── .env                  # Environment variables (not in git)
 ├── README.md            # This file
-└── litmos.db            # SQLite database for traces (generated)
+└── litmus.db            # SQLite database for traces (generated)
 ```
 
 ## Dependencies
@@ -188,13 +188,13 @@ See `requirements.txt` for the full list.
 
 ## Monitoring & Drift Detection
 
-The Litmos SDK automatically tracks:
+The litmus SDK automatically tracks:
 
 - All triage calls and their results
 - Model outputs for drift analysis
 - Comparison against golden test patterns
 
-Database location: `./litmos.db` (SQLite)
+Database location: `./litmus.db` (SQLite)
 Vector store location: `./chroma/` (ChromaDB)
 
 ## Disclaimer
@@ -225,4 +225,4 @@ Runs the full 2-agent pipeline.
 
 ### `triage_to_str(symptom_description, system_prompt=None) -> str`
 
-Convenience wrapper returning formatted string output. Used as Litmos golden test entrypoint.
+Convenience wrapper returning formatted string output. Used as litmus golden test entrypoint.
