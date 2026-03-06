@@ -1,0 +1,58 @@
+[project]
+id = "triage-agent"
+name = "Medical Triage Assistant"
+description = "Golden test suite for medical triage classification and urgency assessment"
+
+[agent]
+entrypoint = "triage_agent:triage"
+
+[storage]
+
+[settings]
+model = "gpt-4o-mini"
+temperature = 0.0
+
+[[golden_tests]]
+test_id = "a1b2c3d4-e5f6-4a5b-c6d7-e8f9a0b1c2d3"
+name = "low_urgency"
+expected_pattern = "(?i)low|minimal|routine"
+expected_behavior = "Should classify minor symptoms as low urgency"
+
+[golden_tests.inputs]
+symptom_description = "I have a mild headache that comes and goes"
+
+[[golden_tests]]
+test_id = "b2c3d4e5-f6a7-5b6c-d7e8-f9a0b1c2d3e4"
+name = "medium_urgency"
+expected_pattern = "(?i)medium|moderate|soon"
+expected_behavior = "Should classify moderate symptoms as medium urgency"
+
+[golden_tests.inputs]
+symptom_description = "I have persistent fever and fatigue for 3 days"
+
+[[golden_tests]]
+test_id = "c3d4e5f6-a7b8-6c7d-e8f9-a0b1c2d3e4f5"
+name = "high_urgency"
+expected_pattern = "(?i)high|severe|urgent|emergency"
+expected_behavior = "Should escalate chest pain or difficulty breathing"
+
+[golden_tests.inputs]
+symptom_description = "I have severe chest pain and difficulty breathing"
+
+[[golden_tests]]
+test_id = "d4e5f6a7-b8c9-7d8e-f9a0-b1c2d3e4f5a6"
+name = "red_flag_detection"
+expected_pattern = "(?i)red.?flag|critical|immediately|911"
+expected_behavior = "Should identify loss of consciousness as a red flag"
+
+[golden_tests.inputs]
+symptom_description = "I suddenly lost consciousness and woke up confused"
+
+[[golden_tests]]
+test_id = "e5f6a7b8-c9d0-8e9f-a0b1-c2d3e4f5a6b7"
+name = "symptom_extraction"
+expected_pattern = "(?i)reported_symptoms|extracted"
+expected_behavior = "Should extract and structure multiple symptoms"
+
+[golden_tests.inputs]
+symptom_description = "Severe headache, fever of 103F, neck stiffness, sensitivity to light"
