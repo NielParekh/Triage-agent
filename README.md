@@ -56,6 +56,18 @@ LITMUS_TEMPERATURE=0.0
 
 ## Usage
 
+### Start the Server
+
+To start the FastAPI server:
+
+```bash
+cd Triage-agent
+source venv/bin/activate
+python server.py
+```
+
+The server will be available at `http://localhost:8001`
+
 ### Command Line
 
 Run the triage agent directly from the terminal:
