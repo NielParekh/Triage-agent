@@ -6,8 +6,6 @@ description = "Golden test suite for medical triage classification and urgency a
 [agent]
 entrypoint = "triage_agent:triage"
 
-[storage]
-
 [settings]
 model = "gpt-4o-mini"
 temperature = 0.0
