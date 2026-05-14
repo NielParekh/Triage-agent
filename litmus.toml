@@ -1,6 +1,6 @@
 [project]
 id = "triage-agent"
-name = "Medical Triage Assistant"
+name = "Medical Assistant"
 description = "Golden test suite for medical triage classification and urgency assessment"
 
 [agent]
